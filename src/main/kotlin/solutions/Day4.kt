@@ -6,17 +6,6 @@ fun main() {
 
     //Part1////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    fun checkForSimpleAdjacentEquality(number: Int): Boolean {
-        val asString = number.toString()
-
-        return asString.filterIndexed { index, digit ->
-            when (index) {
-                0 -> false
-                else -> (digit.toInt() == asString[index - 1].toInt())
-            }
-        }.isNotEmpty()
-    }
-
     fun checkForIncreasingSequence(number: Int): Boolean {
         val asString = number.toString()
 
@@ -28,8 +17,21 @@ fun main() {
         }.length == asString.length
     }
 
-    println("Answer to Part 1: "
-            + input.filter { checkForSimpleAdjacentEquality(it) && checkForIncreasingSequence(it) }.size
+    fun getAdjacentNumbers(number: Int): String {
+        val asString = number.toString()
+        return asString.filterIndexed { index, digit ->
+            when (index) {
+                0 -> false
+                else -> (digit.toInt() == asString[index - 1].toInt())
+            }
+        }
+    }
+
+    fun checkForSimpleAdjacentEquality(number: Int): Boolean = getAdjacentNumbers(number).isNotEmpty()
+
+    println(
+        "Answer to Part 1: "
+                + input.filter { checkForSimpleAdjacentEquality(it) && checkForIncreasingSequence(it) }.size
     )
 
     //Part2////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,22 +45,14 @@ fun main() {
     }
 
     fun checkForComplexAdjacentEquality(number: Int): Boolean {
-        val asString = number.toString()
+        val firstCheck = getAdjacentNumbers(number)
 
-        val firstLevelCheck = asString.filterIndexed { index, digit ->
-            when (index) {
-                0 -> false
-                else -> (digit.toInt() == asString[index - 1].toInt())
-            }
-        }
-        return firstLevelCheck.filterIndexed { index, digit ->
-            validateNeighbors(index, digit.toInt(), firstLevelCheck)
+        return firstCheck.filterIndexed { index, digit ->
+            validateNeighbors(index, digit.toInt(), firstCheck)
         }.isNotEmpty()
     }
 
     println(
-        "Answer to Part 2: "
-                + input.filter { checkForComplexAdjacentEquality(it) && checkForIncreasingSequence(it) }.size
+        "Answer to Part 2: " + input.filter { checkForComplexAdjacentEquality(it) && checkForIncreasingSequence(it) }.size
     )
-
 }
