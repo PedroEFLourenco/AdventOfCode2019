@@ -15,7 +15,11 @@ fun main() {
     val totalFuel = Utils.readInputIntoListOfInts("Day1.txt")
         .sumBy { mass -> calculateFuel(mass) }
 
+    println("Part1 : $totalFuel")
+
     //Part2///////////////////////////////////////////////////////////////////////////////////////////////
     val totalExhaustiveFuel = Utils.readInputIntoListOfInts("Day1.txt")
         .sumBy { mass -> exhaustiveFuelCalculation(mass) }
+
+    println("Part2 : $totalExhaustiveFuel")
 }

@@ -8,7 +8,6 @@ object Utils {
         )
             .readLines()[0]
     }
-
     fun readInputIntoListOfInts(fileName: String): List<Int> {
         return File(ClassLoader.getSystemResource(fileName).toURI())
             .readLines()
@@ -21,8 +20,6 @@ object Utils {
             .flatten()
             .map { it.toInt() }
     }
-
-
     fun readInputIntoListOfStrings(fileName: String, delimiter: String): List<String> {
         return File(ClassLoader.getSystemResource(fileName).toURI())
             .readLines()
