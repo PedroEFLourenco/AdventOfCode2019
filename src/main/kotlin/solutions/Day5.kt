@@ -40,9 +40,7 @@ val equalsImplementation: (List<Int>) -> Int = {
         else -> 0
     }
 }
-val haltImplementation: (IntArray) -> Unit = {
-    /*print("Result: "); it.forEach { print("$it ") }; println();*/ exitProcess(0)
-}
+val haltImplementation: (IntArray) -> Unit =  exitProcess(0)
 
 val addOperation = Operation(1, 3, 4, sumImplementation)
 val timesOperation = Operation(2, 3, 4, timesImplementation)
@@ -64,8 +62,20 @@ val supportedInstructions =
         jumpIfFalseOperation.operator to jumpIfFalseOperation,
         lessThanOperation.operator to lessThanOperation,
         equalsOperation.operator to equalsOperation,
-        99 to haltOperation
+        haltOperation.operator to haltOperation
     )
+
+val nonMutationOps = listOf(outputOperation.operator)
+val mutationOps = listOf(
+    addOperation.operator,
+    timesOperation.operator,
+    inputOperation.operator,
+    equalsOperation.operator,
+    lessThanOperation.operator
+)
+val pointerEditingOps = listOf(jumpIfTrueOperation.operator, jumpIfFalseOperation.operator)
+
+var instructionPointer = 0;
 
 enum class ParameterModes(val value: Int) {
     POSITIONAL(0),
@@ -75,9 +85,8 @@ enum class ParameterModes(val value: Int) {
 fun main() {
 
     val input = readDelimitedInputIntoListOfInts("Day5.txt", ",").toIntArray()
-   // val input = listOf(3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99).toIntArray()
 
-    //Part1////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    fun operationIsWriter(operator: Int): Boolean = mutationOps.contains(operator)
 
     fun getOperationCode(opcodeAndModes: Int): Int {
         val asString = opcodeAndModes.toString()
@@ -95,23 +104,25 @@ fun main() {
         }
     }
 
-    fun retrieveParameters(parameterModes: List<Int>, parameters: List<Int>): List<Int> {
-
+    fun retrieveParameters(parameterModes: List<Int>, parameters: List<Int>, operator: Int): List<Int> {
         val normalizedModes = parameterModes.reversed()
         return parameters.mapIndexed { index, parameter ->
             when {
-                index == parameters.size - 1 -> parameter
-                index < normalizedModes.size &&
-                        normalizedModes[index] == ParameterModes.IMMEDIATE.value -> parameter
+                index == parameters.size - 1 && index >= normalizedModes.size && operationIsWriter(operator) -> parameter
+                index == parameters.size - 1 && index >= normalizedModes.size && !operationIsWriter(operator) -> input[parameter]
+                index < normalizedModes.size && normalizedModes[index] == ParameterModes.IMMEDIATE.value -> parameter
                 else -> input[parameter]
             }
         }
     }
 
+    //Part1////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     fun <I, R> execMutationOperation(startIndex: Int, operation: Operation<I, R>) {
         val resolvedParameters = retrieveParameters(
             getParameterModes(input[startIndex]),
-            input.asList().subList(startIndex + 1, startIndex + operation.numberOfParams)
+            input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset),
+            operation.operator
         )
 
         val operands = resolvedParameters.subList(0, resolvedParameters.size - 1)
@@ -124,15 +135,13 @@ fun main() {
         run {
             val resolvedParameters = retrieveParameters(
                 getParameterModes(input[startIndex]),
-                input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset)
+                input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset),
+                operation.operator
             )
-            val operands = resolvedParameters.subList(0, resolvedParameters.size).map { input[it] }
-
-            operation.implementation(operands as I)
+            operation.implementation(resolvedParameters as I)
         }
 
     fun <I, R> performOperation(startIndex: Int, operation: Operation<I, R>) {
-        // println(input.asList().subList(startIndex,startIndex + operation.nextOperationOffset))
         when (operation) {
             haltOperation -> operation.implementation(input as I)
             outputOperation -> execNonMutationOperation(startIndex, operation)
@@ -147,73 +156,49 @@ fun main() {
         performOperation(startIndex, instruction)
         computeIntCodePart1(startIndex + instruction.nextOperationOffset)
     }
-   // computeIntCodePart1(0)
+
+    println("--PART1--")
+   //computeIntCodePart1(0)
 
     //Part2////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    val nonMutationOps = listOf(outputOperation.operator)
-    val mutationOps = listOf(addOperation.operator, timesOperation.operator, inputOperation.operator, equalsOperation.operator, lessThanOperation.operator)
-    val pointerEditingOps = listOf(jumpIfTrueOperation.operator, jumpIfFalseOperation.operator)
-
-    var instructionPointer = 0;
 
     fun <I, R> execMutationOperationPart2(startIndex: Int, operation: Operation<I, R>) {
         val resolvedParameters = retrieveParameters(
             getParameterModes(input[startIndex]),
-            input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset)
+            input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset),
+            operation.operator
         )
-
         val operands = resolvedParameters.subList(0, resolvedParameters.size - 1)
         val resultStorageLocation = resolvedParameters.last()
+
         val result = operation.implementation(operands as I)
         input[resultStorageLocation] = result as Int
         instructionPointer = startIndex + operation.nextOperationOffset
-        println("MUTATION OPERATION")
-        println("resolvedParameters: $resolvedParameters")
-        println("Operands: $operands")
-        println("Result: $result")
-        println("NextOperation at index: $instructionPointer")
     }
 
     fun <I, R> execPointerEditorOperation(startIndex: Int, operation: Operation<I, R>) {
         val resolvedParameters = retrieveParameters(
             getParameterModes(input[startIndex]),
-            input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset)
+            input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset),
+            operation.operator
         )
-
-        val operands = resolvedParameters.subList(0, resolvedParameters.size - 1)
+        val operands = resolvedParameters.subList(0, resolvedParameters.size)
         val result = operation.implementation(operands as I)
-
         instructionPointer = (result ?: (startIndex + operation.nextOperationOffset)) as Int
-        println("POINTER EDITOR OPERATION")
-        println("resolvedParameters: $resolvedParameters")
-        println("Operands: $operands")
-        println("NextOperation at index: $instructionPointer")
     }
 
     fun <I, R> execNonMutationOperationPart2(startIndex: Int, operation: Operation<I, R>) =
         run {
-
-
             val resolvedParameters = retrieveParameters(
                 getParameterModes(input[startIndex]),
-                input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset)
+                input.asList().subList(startIndex + 1, startIndex + operation.nextOperationOffset),
+                operation.operator
             )
-            val operands = resolvedParameters.subList(0, resolvedParameters.size).map { input[it] }
-
-            operation.implementation(operands as I)
+            operation.implementation(resolvedParameters as I)
             instructionPointer = startIndex + operation.nextOperationOffset
-            println("NONMUTATION OPERATION")
-            println("resolvedParameters: $resolvedParameters")
-            println("Operands: $operands")
-            println("NextOperation at index: $instructionPointer")
         }
 
     fun <I, R> performOperationPart2(startIndex: Int, operation: Operation<I, R>) {
-        print("PROGRAM: ")
-        input.asList().forEachIndexed { index, i -> print("Index $index: $i, ") }
-        println()
-        println("INSTRUCTION: " + input.asList().subList(startIndex,startIndex + operation.nextOperationOffset))
         when {
             operation == haltOperation -> operation.implementation(input as I)
             nonMutationOps.contains(operation.operator) -> execNonMutationOperationPart2(startIndex, operation)
@@ -230,6 +215,6 @@ fun main() {
         computeIntCodePart2(instructionPointer)
     }
 
-
+    println("--PART2--")
     computeIntCodePart2(0)
 }

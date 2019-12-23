@@ -4,17 +4,6 @@
     <list default="true" id="aa179bcd-7869-43e8-8552-3a48726eb658" name="Default Changelist" comment="Solutions for day 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/solutions/Day5.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/solutions/Day5.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Day5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Day5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/AdventOfCode2019.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/AdventOfCode2019.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day1Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day1Kt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$2$result$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$2$result$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$sumCalculation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$sumCalculation$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$timesCalculation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt$main$timesCalculation$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/solutions/Day2Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/solutions/Day2Kt.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,42 +169,46 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576686066927" />
-    <state width="1877" height="372" key="GridCell.Tab.0.bottom" timestamp="1576863863727">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1577100954823">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@0.0.1536.824" timestamp="1576235526604" />
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576674754333" />
-    <state width="1877" height="372" key="GridCell.Tab.0.bottom/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1576863863727" />
-    <state width="1877" height="372" key="GridCell.Tab.0.center" timestamp="1576863863726">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1577100954823" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1577100954822">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@0.0.1536.824" timestamp="1576235526603" />
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576674754332" />
-    <state width="1877" height="372" key="GridCell.Tab.0.center/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1576863863726" />
-    <state width="1877" height="372" key="GridCell.Tab.0.left" timestamp="1576863863726">
+    <state width="1877" height="295" key="GridCell.Tab.0.center/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1577100954822" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1577100954822">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@0.0.1536.824" timestamp="1576235526602" />
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576674754332" />
-    <state width="1877" height="372" key="GridCell.Tab.0.left/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1576863863726" />
-    <state width="1877" height="372" key="GridCell.Tab.0.right" timestamp="1576863863727">
+    <state width="1877" height="295" key="GridCell.Tab.0.left/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1577100954822" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1577100954822">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@0.0.1536.824" timestamp="1576235526603" />
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576674754333" />
-    <state width="1877" height="372" key="GridCell.Tab.0.right/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1576863863727" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1577100954822" />
     <state x="4186" y="68" key="SettingsEditor" timestamp="1576779118464">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@0.0.1536.824" timestamp="1576236193286" />
     <state x="2266" y="68" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576238094779" />
     <state x="4186" y="68" key="SettingsEditor/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1576779118464" />
-    <state x="4421" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1576837307847">
+    <state x="4421" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1577094553998">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
     <state x="-1339" y="298" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@-1920.0.1920.1040" timestamp="1576677862212" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@0.0.1536.824" timestamp="1576236153450" />
     <state x="2501" y="298" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576666288828" />
-    <state x="4421" y="298" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1576837307847" />
+    <state x="4421" y="298" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1577094553998" />
+    <state x="4456" y="240" key="run.anything.popup" timestamp="1577098550816">
+      <screen x="3840" y="0" width="1920" height="1040" />
+    </state>
+    <state x="4456" y="240" key="run.anything.popup/1920.0.1536.832/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1577098550816" />
   </component>
 </project>
